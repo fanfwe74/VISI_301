@@ -135,6 +135,31 @@ def player_keys():
 	if keys[pygame.K_DOWN] and y < y_len - player_width:
 		y += velocity
 
+jump_counter = 0
+isjump = False
+
+def player_jump():
+        """
+        Quand la touche espace est enclenchée les coordonnées en y sont modifiées
+        """
+        global y, jump_counter
+        
+        y_init = y
+        g = 9.81
+        m = 50
+        
+        v0 = -0.2943
+
+        if jump_counter < 30:
+                y += v0
+        else:
+                y -= v0
+
+        if jump_counter == 60:
+                jump_counter = 0
+        else:
+                jump_counter += 1
+                
 
 def neighbour_blocks(tab, x, y):
 	"""
@@ -188,6 +213,9 @@ def player_animation():
 		screen.blit(player_right[animation_counter],(x*ratio,y*ratio))
 
 
+
+
+
 """############CORPS############"""
 
 launched = True
@@ -212,7 +240,10 @@ while launched:
 	keys = pygame.key.get_pressed()
 	screen_keys()
 
-	player_keys()
+        player_keys()
+
+        player_jump()
+	
 	player_rect.x = x*ratio
 	player_rect.y = y*ratio
 
