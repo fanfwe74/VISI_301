@@ -35,7 +35,7 @@ animation_counter = 0	#compteur animation
 left = False
 right = False
 isjump= False
-vy = 0 # vitesse en vertical
+vy = gravité # vitesse en vertical
 
 #COULEURS
 white = (255,255,255)
