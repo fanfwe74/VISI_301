@@ -12,7 +12,7 @@ Changelog 3:
 
 ratio = 20 # ratio écran/grille
 counter = 0 # compteur de boucle
-velocity = list([(i / 2.0) - 7.5 for i in range(0, 31)])
+velocity = list([(i / 4.0) - 3.75 for i in range(0, 31)])
 
 
 # COULEURS
@@ -109,11 +109,11 @@ class Player(object):
 			self.move_single_axis(0, velocity[self.velocity_index]) 
 			self.velocity_index += 1
 			if (self.velocity_index >= len(velocity)-1):
-		 		self.velocity_index = len(velocity)-1
-		 	for block in blocks:
-		 		if self.rect.bottom == block.rect.top:
-		 			self.isjump = False
-		 			self.velocity_index = 0
+				self.velocity_index = len(velocity)-1
+			for block in blocks:
+				if self.rect.bottom == block.rect.top:
+					self.isjump = False
+					self.velocity_index = 0
 
 
 
